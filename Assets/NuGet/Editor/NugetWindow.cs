@@ -617,6 +617,12 @@
                     {
                         Refresh(true);
                     }
+
+                    if(GUILayout.Button("Preferences", GUILayout.Width(80)))
+                    {
+                        SettingsService.OpenUserPreferences("Preferences/NuGet For Unity");
+                        GetWindow<NugetWindow>().Close();
+                    }
                 }
                 EditorGUILayout.EndHorizontal();
 
