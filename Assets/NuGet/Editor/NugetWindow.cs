@@ -687,6 +687,20 @@
 
                 EditorGUILayout.BeginHorizontal();
                 {
+                    if (GUILayout.Button("Preferences", GUILayout.Width(80)))
+                    {
+#if UNITY_2018_3_OR_NEWER
+                        SettingsService.OpenUserPreferences("Preferences/NuGet For Unity");
+#else
+                        EditorApplication.ExecuteMenuItem("Edit/Preferences...");
+#endif
+                        GetWindow<NugetWindow>().Close();
+                    }
+                }
+                EditorGUILayout.EndHorizontal();
+
+                EditorGUILayout.BeginHorizontal();
+                {
                     int oldFontSize = GUI.skin.textField.fontSize;
                     GUI.skin.textField.fontSize = 25;
                     installedSearchTermEditBox = EditorGUILayout.TextField(installedSearchTermEditBox, GUILayout.Height(30));
@@ -746,6 +760,16 @@
                     if (GUILayout.Button("Refresh", GUILayout.Width(60)))
                     {
                         Refresh(true);
+                    }
+
+                    if (GUILayout.Button("Preferences", GUILayout.Width(80)))
+                    {
+#if UNITY_2018_3_OR_NEWER
+                        SettingsService.OpenUserPreferences("Preferences/NuGet For Unity");
+#else
+                        EditorApplication.ExecuteMenuItem("Edit/Preferences...");
+#endif
+                        GetWindow<NugetWindow>().Close();
                     }
                 }
                 EditorGUILayout.EndHorizontal();
