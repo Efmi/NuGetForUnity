@@ -620,7 +620,11 @@
 
                     if(GUILayout.Button("Preferences", GUILayout.Width(80)))
                     {
-                        SettingsService.OpenUserPreferences("Preferences/NuGet For Unity");
+#if UNITY_2018_3_OR_NEWER
+                        SettingsService.OpenUserPreferences("Preferences/NuGet For Unity");                 
+#else
+                        EditorApplication.ExecuteMenuItem("Edit/Preferences...");
+#endif
                         GetWindow<NugetWindow>().Close();
                     }
                 }
